@@ -1,13 +1,16 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ShowPost = () => {
     const navigate = useNavigate();
+    // console.log(navigate)
+    // console.log(useNavigate)
     const [listedAdvertisements, setListedAdvertisements] = useState([]);
     const [newAdd, setNewAdd] = useState({
         title: "",
         description: "",
+        price: "",
+        Location: ""
     });
 
     useEffect(() => {
@@ -17,7 +20,9 @@ const ShowPost = () => {
                     "https://strangers-things.herokuapp.com/api/2306-fsa-et-web-ft-sf/posts"
                 );
                 const data = await response.json();
+                // console.log(data)
                 const advertisements = data.data.posts;
+                // console.log(advertisements)
                 setListedAdvertisements(advertisements);
             } catch (error) {
                 console.error("Error fetching listings:", error);
@@ -27,10 +32,10 @@ const ShowPost = () => {
     }, []);
 
     const showSingleListing = async (listingUrl) => {
-        console.log(listingUrl);
+        // console.log(listingUrl);
         try {
             const response = await fetch(listingUrl);
-
+            // console.log(response)
             if (!response.ok) {
                 throw new Error("Failed to fetch listing");
             }
@@ -66,6 +71,8 @@ const ShowPost = () => {
             setNewAdd({
                 title: "",
                 description: "",
+                price: "",
+                Location: ""
             });
         } catch (error) {
             console.log("Error uploading a new Add:", error);
