@@ -1,15 +1,25 @@
-import { useState } from "react";
-import LogAuth from "./LogAuth";
+import React, { useState } from 'react';
+
 
 
 const LogInSignUpForm = ({ setToken }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        handleLogin(event);
+    }
+
+
 
     return (
-        <>
-            <h1>Log In Page</h1>
+        <div>
+
             <h3>Stranger's Things</h3>
-        </>
-    )
+
+        </div>
+    );
 }
 
-export default LogInSignUpForm
+export default LogInSignUpForm;
